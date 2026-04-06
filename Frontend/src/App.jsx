@@ -1,3 +1,15 @@
+
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { AppProvider } from "./context/AppContext";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Index from "./pages/Index";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import About from "./pages/AboutUs";
+import ContactUs from "./pages/ContactUs";
+=======
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AppProvider } from './context/AppContext';
@@ -19,7 +31,11 @@ function App() {
               <Route path="/" element={<Index />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<ContactUs />} />
+=======
               <Route path="/career" element={<Career />} />
+
             </Routes>
           </main>
           <Footer />

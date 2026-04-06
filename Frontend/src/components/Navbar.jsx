@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { useApp } from '../context/AppContext';
+import React, { useState, useEffect } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { useApp } from "../context/AppContext";
 
 const Navbar = () => {
   const { NAV_LINKS } = useApp();
-  const [activeSection, setActiveSection] = useState('home');
+  const [activeSection, setActiveSection] = useState("home");
 
   useEffect(() => {
     const observerOptions = {
       root: null,
-      rootMargin: '-20% 0px -60% 0px', // Adjust to trigger in the middle of the viewport
+      rootMargin: "-20% 0px -60% 0px", // Adjust to trigger in the middle of the viewport
       threshold: 0,
     };
 
@@ -21,7 +21,10 @@ const Navbar = () => {
       });
     };
 
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
+    const observer = new IntersectionObserver(
+      observerCallback,
+      observerOptions,
+    );
 
     NAV_LINKS.forEach((link) => {
       const element = document.getElementById(link.id);
@@ -43,6 +46,71 @@ const Navbar = () => {
           <span className="text-2xl">🚀</span>
           <span className="text-xl font-bold text-indigo-600">SkillTrix</span>
         </Link>
+
+
+        {/* NAV LINKS */}
+        <div className="hidden md:flex items-center gap-8 text-gray-700 font-medium">
+          {/* HOME */}
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              isActive
+                ? "text-indigo-600 font-semibold"
+                : "hover:text-indigo-600"
+            }
+          >
+            Home
+          </NavLink>
+
+          {/* ABOUT */}
+          <NavLink
+            to="/about"
+            className={({ isActive }) =>
+              isActive
+                ? "text-indigo-600 font-semibold"
+                : "hover:text-indigo-600"
+            }
+          >
+            About
+          </NavLink>
+
+          <Link to="/">Courses</Link>
+          <Link to="/">Career</Link>
+          <Link to="/">Success Stories</Link>
+          <NavLink
+            to="/contact"
+            className={({ isActive }) =>
+              isActive
+                ? "text-indigo-600 font-semibold"
+                : "hover:text-indigo-600"
+            }
+          >
+            Contact Us
+          </NavLink>
+        </div>
+
+        {/* <div className="hidden md:flex items-center gap-8">
+          {NAV_LINKS.map((l) => (
+            <a
+              key={l.id}
+              href={`/#${l.id}`}
+              className={`text-sm transition-all duration-300 font-medium relative group ${
+                activeSection === l.id
+                  ? "text-indigo-600"
+                  : "text-gray-600 hover:text-indigo-600"
+              }`}
+            >
+              {l.name}
+              
+              <span
+                className={`absolute -bottom-1 left-0 h-0.5 bg-indigo-600 transition-all duration-300 ${
+                  activeSection === l.id ? "w-full" : "w-0 group-hover:w-full"
+                }`}
+              />
+            </a>
+          ))}
+        </div> */}
+=======
         <div className="hidden md:flex items-center gap-8">
           {NAV_LINKS.map((l) => {
             const linkClass = `text-sm transition-all duration-300 font-medium relative group ${
@@ -67,10 +135,16 @@ const Navbar = () => {
           })}
         </div>
         <div className="flex items-center gap-3">
-          <Link to="/login" className="hidden md:block px-5 py-2 text-sm font-semibold border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+          <Link
+            to="/login"
+            className="hidden md:block px-5 py-2 text-sm font-semibold border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+          >
             Login
           </Link>
-          <Link to="/signup" className="px-5 py-2 text-sm font-semibold bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors">
+          <Link
+            to="/signup"
+            className="px-5 py-2 text-sm font-semibold bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
+          >
             Sign Up
           </Link>
         </div>
@@ -80,3 +154,32 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+// import React from "react";
+// import { Link, NavLink } from "react-router-dom";
+
+// const Navbar = () => {
+//   return (
+//     <nav className="flex justify-between items-center px-10 py-5 bg-white shadow-sm sticky top-0 z-50">
+
+//       <div className="flex items-center gap-2">
+//         <span className="text-2xl font-bold text-indigo-600">🚀 SkillTrix</span>
+//       </div>
+
+//
+
+//       {/* BUTTONS */}
+//       <div className="flex items-center gap-3">
+//         <button className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-100">
+//           Login
+//         </button>
+
+//         <button className="px-5 py-2 bg-gradient-to-r from-indigo-500 to-purple-600 text-white rounded-lg shadow hover:opacity-90 transition">
+//           Sign Up
+//         </button>
+//       </div>
+//     </nav>
+//   );
+// };
+
+// export default Navbar;
