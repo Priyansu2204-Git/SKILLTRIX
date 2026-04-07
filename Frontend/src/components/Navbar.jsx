@@ -47,48 +47,6 @@ const Navbar = () => {
           <span className="text-xl font-bold text-indigo-600">SkillTrix</span>
         </Link>
 
-
-        {/* NAV LINKS */}
-        <div className="hidden md:flex items-center gap-8 text-gray-700 font-medium">
-          {/* HOME */}
-          <NavLink
-            to="/"
-            className={({ isActive }) =>
-              isActive
-                ? "text-indigo-600 font-semibold"
-                : "hover:text-indigo-600"
-            }
-          >
-            Home
-          </NavLink>
-
-          {/* ABOUT */}
-          <NavLink
-            to="/about"
-            className={({ isActive }) =>
-              isActive
-                ? "text-indigo-600 font-semibold"
-                : "hover:text-indigo-600"
-            }
-          >
-            About
-          </NavLink>
-
-          <Link to="/">Courses</Link>
-          <Link to="/">Career</Link>
-          <Link to="/">Success Stories</Link>
-          <NavLink
-            to="/contact"
-            className={({ isActive }) =>
-              isActive
-                ? "text-indigo-600 font-semibold"
-                : "hover:text-indigo-600"
-            }
-          >
-            Contact Us
-          </NavLink>
-        </div>
-
         {/* <div className="hidden md:flex items-center gap-8">
           {NAV_LINKS.map((l) => (
             <a
@@ -110,7 +68,6 @@ const Navbar = () => {
             </a>
           ))}
         </div> */}
-=======
         <div className="hidden md:flex items-center gap-8">
           {NAV_LINKS.map((l) => {
             const linkClass = `text-sm transition-all duration-300 font-medium relative group ${
