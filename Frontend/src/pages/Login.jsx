@@ -1,9 +1,19 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Mail, Lock, Eye, EyeOff, Send } from 'lucide-react';
+import { useApp } from '../context/AppContext';
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const { setToken } = useApp();
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Simulate login success
+    setToken(true);
+    navigate('/dashboard');
+  };
 
   return (
     <div className="min-h-screen flex bg-white">
@@ -35,7 +45,7 @@ const Login = () => {
             <p className="text-gray-500 font-medium text-sm">Please enter your credentials to access your account.</p>
           </div>
 
-          <form className="space-y-6">
+          <form className="space-y-6" onSubmit={handleSubmit}>
             {/* Email Field */}
             <div className="relative group">
               <label className="absolute -top-2.5 left-4 bg-white px-2 text-xs font-bold text-gray-500 group-focus-within:text-indigo-600 transition-colors z-10">
@@ -47,6 +57,7 @@ const Login = () => {
                   type="email" 
                   placeholder="name@example.com"
                   className="w-full focus:outline-none text-gray-700 font-medium placeholder:text-gray-300"
+                  required
                 />
               </div>
             </div>
@@ -65,6 +76,7 @@ const Login = () => {
                   type={showPassword ? "text" : "password"} 
                   placeholder="••••••••"
                   className="w-full focus:outline-none text-gray-700 font-medium placeholder:text-gray-300"
+                  required
                 />
                 <button 
                   type="button" 
@@ -76,8 +88,8 @@ const Login = () => {
               </div>
             </div>
 
-            <button className="w-full py-4 bg-linear-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold rounded-2xl shadow-xl shadow-indigo-100 transition-all transform hover:-translate-y-1 active:translate-y-0 cursor-pointer">
-              Sign In
+            <button type="submit" className="w-full py-4 bg-linear-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold rounded-2xl shadow-xl shadow-indigo-100 transition-all transform hover:-translate-y-1 active:translate-y-0 cursor-pointer text-center flex justify-center items-center gap-2">
+              Sign In <Send className="w-4 h-4" />
             </button>
           </form>
 
@@ -92,5 +104,6 @@ const Login = () => {
     </div>
   );
 };
+
 
 export default Login;

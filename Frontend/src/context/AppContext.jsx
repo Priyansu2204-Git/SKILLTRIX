@@ -1,4 +1,4 @@
-import React, { createContext, useContext } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
 const AppContext = createContext();
 
@@ -11,6 +11,7 @@ export const useApp = () => {
 };
 
 export const AppProvider = ({ children }) => {
+  const [token, setToken] = useState(false);
   const NAV_LINKS = [
     { name: "Home", id: "home" },
     { name: "About", id: "about" },
@@ -130,6 +131,8 @@ export const AppProvider = ({ children }) => {
     STATS,
     CAREER_STEPS,
     TESTIMONIALS,
+    token,
+    setToken
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
