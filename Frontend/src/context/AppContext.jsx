@@ -1,4 +1,8 @@
 import React, { createContext, useContext, useState } from 'react';
+import { 
+  LayoutDashboard, BookOpen, Users, FileCheck, Video, Calendar, 
+  BarChart3, MessageSquare, User, LifeBuoy, TrendingUp, Clock, Award, ExternalLink 
+} from 'lucide-react';
 
 const AppContext = createContext();
 
@@ -123,6 +127,63 @@ export const AppProvider = ({ children }) => {
     },
   ];
 
+  // Dashboard Specific Data
+  const DASHBOARD_SIDEBAR_ITEMS = [
+    { name: 'Dashboard', icon: LayoutDashboard },
+    { name: 'Course Management', icon: BookOpen },
+    { name: 'Student List', icon: Users },
+    { name: 'Submissions', icon: FileCheck },
+    { name: 'Live Sessions', icon: Video },
+    { name: 'Schedule', icon: Calendar },
+    { name: 'Analytics', icon: BarChart3 },
+    { name: 'Messages', icon: MessageSquare },
+    { name: 'Profile', icon: User },
+    { name: 'Support', icon: LifeBuoy },
+  ];
+
+  const DASHBOARD_STATS_CARDS = [
+    { title: 'Progress', value: '65%', icon: TrendingUp, detail: 'Progress up by 5%', highlight: true },
+    { title: 'Rect Courses', value: '52', icon: BookOpen, detail: '4 new this week' },
+    { title: 'Pending Assignments', value: '3', icon: Clock, detail: 'Due within 48h' },
+    { title: 'Internship Applications', value: '4', icon: FileCheck, detail: '2 in review' },
+    { title: 'Certificates Earned', value: '2 120h', icon: Award, detail: 'Latest achievements' },
+  ];
+
+  const DASHBOARD_CONTINUE_LEARNING = [
+    { title: 'React Development', mentor: 'John Doe', progress: 40, image: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=400&q=80' },
+    { title: 'UI/UX Design', mentor: 'Sarah Ali', progress: 40, image: 'https://images.unsplash.com/photo-1541462608141-ad4d05945035?w=400&q=80' },
+    { title: 'Python Basics', mentor: 'Mark Smith', progress: 40, image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=400&q=80' },
+  ];
+
+  const DASHBOARD_MY_COURSES = [
+    { title: 'React Development', mentor: 'John Doe', progress: 70, status: 'In Progress', image: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=500&q=80' },
+    { title: 'UI/UX Design', mentor: 'Sarah Ali', progress: 45, status: 'In Progress', image: 'https://images.unsplash.com/photo-1541462608141-ad4d05945035?w=500&q=80' },
+    { title: 'Digital Marketing', mentor: 'Mark Smith', progress: 20, status: 'Starting', image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=500&q=80' },
+  ];
+
+  const DASHBOARD_MESSAGES = [
+    { name: 'John Doe', msg: 'Adjalit@gmail.com', time: '1 hr ago' },
+    { name: 'Maryam', msg: 'Announcement', time: '3 d ago' },
+  ];
+
+  const DASHBOARD_ASSIGNMENTS = [
+    { title: 'Project Report', date: 'Due Apr 20, 2024', status: 'Pending', color: 'solidOrange' },
+    { title: 'Coding Challenge', date: 'Due Apr 3, 2024', status: 'Submitted', color: 'solidBlue' },
+  ];
+
+  const DASHBOARD_OBJECTIVES = [
+    { title: 'Last achieved', date: 'Due: Apr 16, 2024', status: 'Upload', color: 'solidOrange' },
+    { title: 'Coding Challenge', date: 'Due: Apr 18, 2024', status: 'Submitted', color: 'solidBlue' },
+  ];
+
+  const DASHBOARD_INTERNSHIPS = {
+    title: 'Frontend Intern',
+    company: 'XYZ Corp',
+    type: 'Remote / Part-Time',
+    salary: '₹ 1,00,000/month',
+    status: 'Applied'
+  };
+
   const value = {
     NAV_LINKS,
     TECH_STACK,
@@ -131,6 +192,17 @@ export const AppProvider = ({ children }) => {
     STATS,
     CAREER_STEPS,
     TESTIMONIALS,
+    
+    // Dashboard Data
+    DASHBOARD_SIDEBAR_ITEMS,
+    DASHBOARD_STATS_CARDS,
+    DASHBOARD_CONTINUE_LEARNING,
+    DASHBOARD_MY_COURSES,
+    DASHBOARD_MESSAGES,
+    DASHBOARD_ASSIGNMENTS,
+    DASHBOARD_OBJECTIVES,
+    DASHBOARD_INTERNSHIPS,
+    
     token,
     setToken
   };
